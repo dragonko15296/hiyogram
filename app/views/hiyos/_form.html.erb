@@ -1,0 +1,23 @@
+<section class=form_hiyo>
+  <%= form_for(@hiyo, url: choose_new_or_edit) do |f| %>
+    
+    <% if @hiyo.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= @hiyo.errors.count %>こ、ひよりなおして。</h2>
+          <ul>
+          <% @hiyo.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
+    <% end %>
+    
+    <%= f.text_field :content, class: 'form-control' %>
+    <br>
+    <%= f.submit "ひよる！", class: 'btn btn-warning btn-block' %>
+    
+  <% end %>
+
+  <%= link_to "ひよりのまとめへ", hiyos_path, class: "btn btn-default btn-block" %>
+  
+</section>
