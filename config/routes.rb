@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :hiyos, except: [:show] do
     collection do
       post :confirm
