@@ -12,6 +12,12 @@
     <ul class="header_left">
       <li><%= link_to "ひよりのまとめ", hiyos_path %></li>
     </ul>
+    <% if user_signed_in? %>
+      <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+    <% else %>
+      <li><%= link_to 'ログイン', new_user_session_path %></li>
+      <li><%= link_to 'サインアップ', new_user_registration_path %></li>
+    <% end %>
     <ul class="header_right">
       <li><%= link_to "ひよる！", new_hiyo_path %></li>
     </ul>

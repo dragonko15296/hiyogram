@@ -1,5 +1,6 @@
 class HiyosController < ApplicationController
   before_action :set_hiyo, only: [:edit,:update,:destroy]
+  #before_action :authenticate_user!
   
   def index
     @hiyo = Hiyo.new
@@ -8,6 +9,7 @@ class HiyosController < ApplicationController
   
   def create
     @hiyo = Hiyo.new(hiyos_params)
+    @hiyo.user_id = current_user.id
     if @hiyo.save
       redirect_to hiyos_path, notice: "ひよった！"
     else
